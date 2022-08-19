@@ -1,4 +1,5 @@
 import React from 'react';
+import * as bs from 'react-bootstrap';
 import Loading from './Loading';
 import { usePlanets } from '../context/Planets';
 import { useFilters } from '../context/Filters';
@@ -22,7 +23,7 @@ const Table = () => {
   tablePlanets = sortPlanets(tablePlanets, order);
 
   return (
-    <table>
+    <bs.Table striped bordered hover variant="dark" size="sm" responsive>
       <thead>
         <tr>
           { Object.keys(planets[0])
@@ -59,7 +60,7 @@ const Table = () => {
           return (<tr key={ planetIndex }>{ tableColumns }</tr>);
         }) }
       </tbody>
-    </table>
+    </bs.Table>
   );
 };
 
