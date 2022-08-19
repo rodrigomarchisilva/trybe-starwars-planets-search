@@ -9,7 +9,13 @@ const NumericFilter = () => {
   const columnOptions = [
     'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
 
-  const firstColumnOptionsDisplayed = columnOptions.map((option, index) => (
+  filterByNumericValues.forEach((filter) => {
+    if (columnOptions.includes(filter.column)) {
+      columnOptions.splice(columnOptions.indexOf(filter.column), 1);
+    }
+  });
+
+  const columnOptionsDisplayed = columnOptions.map((option, index) => (
     <option key={ index } value={ option }>{ option }</option>
   ));
 
@@ -17,11 +23,10 @@ const NumericFilter = () => {
     columnValue: 'population',
     comparisonValue: 'bigger-than',
     inputValue: '0',
-    columnOptionsDisplayed: firstColumnOptionsDisplayed,
   });
 
   const {
-    columnValue, comparisonValue, inputValue, columnOptionsDisplayed,
+    columnValue, comparisonValue, inputValue,
   } = componentValues;
 
   const createValidColumnOptions = () => {
@@ -29,19 +34,24 @@ const NumericFilter = () => {
     const validColumnOptions = columnOptions.filter(
       (option) => !(usedColumnOptions.includes(option)),
     );
-    const newColumnOptionsDisplayed = validColumnOptions.map((validOption, index) => (
-      <option key={ index } value={ validOption }>{ validOption }</option>));
     setComponentValues({
       ...componentValues,
-      columnValue: validColumnOptions[0],
-      columnOptionsDisplayed: newColumnOptionsDisplayed,
+      columnValue: validColumnOptions[0] || '',
     });
+  };
+
+  const checkColumnValue = () => {
+    let output = columnValue;
+    if (columnOptions.length !== 0 && columnValue === '') {
+      [output] = columnOptions;
+    }
+    return output;
   };
 
   const addFilter = () => {
     const numericFiltersArray = filterByNumericValues;
     const newNumericFilter = {
-      column: columnValue, comparison: comparisonValue, value: inputValue };
+      column: checkColumnValue(), comparison: comparisonValue, value: inputValue };
     numericFiltersArray.push(newNumericFilter);
     setFilters({ ...filters, filterByNumericValues: numericFiltersArray });
     createValidColumnOptions();
@@ -51,7 +61,7 @@ const NumericFilter = () => {
     <section>
       <select
         data-testid="column-filter"
-        value={ columnValue }
+        value={ checkColumnValue() }
         onChange={ ({ target }) => setComponentValues(
           { ...componentValues, columnValue: target.value },
         ) }
@@ -84,6 +94,7 @@ const NumericFilter = () => {
         type="button"
         data-testid="button-filter"
         onClick={ addFilter }
+        disabled={ columnOptions.length === 0 }
       >
         Filtrar
       </button>
