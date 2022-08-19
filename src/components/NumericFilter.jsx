@@ -29,14 +29,12 @@ const NumericFilter = () => {
     const validColumnOptions = columnOptions.filter(
       (option) => !(usedColumnOptions.includes(option)),
     );
-    const newColumnOptionsDisplayed = validColumnOptions.map((validOption, index) => {
-      if (index === 0 && columnValue !== validOption) {
-        setComponentValues({ ...componentValues, columnValue: validOption });
-      }
-      return (<option key={ index } value={ validOption }>{ validOption }</option>);
-    });
+    const newColumnOptionsDisplayed = validColumnOptions.map((validOption, index) => (
+      <option key={ index } value={ validOption }>{ validOption }</option>));
     setComponentValues({
-      ...componentValues, columnOptionsDisplayed: newColumnOptionsDisplayed,
+      ...componentValues,
+      columnValue: validColumnOptions[0],
+      columnOptionsDisplayed: newColumnOptionsDisplayed,
     });
   };
 
