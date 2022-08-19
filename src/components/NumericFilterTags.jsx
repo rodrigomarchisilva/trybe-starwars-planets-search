@@ -1,4 +1,5 @@
 import React from 'react';
+import { Badge, Button, ButtonGroup } from 'react-bootstrap';
 import { useFilters } from '../context/Filters';
 
 export default function NumericFilterTags() {
@@ -17,13 +18,28 @@ export default function NumericFilterTags() {
   };
 
   return (
-    <section>
+    <ButtonGroup
+      className={ numericColumnFilters.length > 0 ? 'd-block' : 'd-none' }
+      gap={ 3 }
+    >
       { numericColumnFilters.map(({ column, comparison, value }, index) => (
-        <div key={ index } data-testid="filter">
-          <p>{ `${column} é ${comparison} ${value}` }</p>
-          <button type="button" onClick={ () => removeFilter(column) }>X</button>
-        </div>
+        <Button
+          size="sm"
+          key={ index }
+          variant="outline-dark"
+          data-testid="filter"
+        >
+          <Badge
+            className="me-2"
+            bg="danger"
+            role="button"
+            onClick={ () => removeFilter(column) }
+          >
+            X
+          </Badge>
+          { `${column} é ${comparison} ${value}` }
+        </Button>
       ))}
-    </section>
+    </ButtonGroup>
   );
 }
