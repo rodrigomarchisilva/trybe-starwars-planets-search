@@ -8,7 +8,14 @@ export const FiltersProvider = ({ children }) => {
     filterByName: {
       name: '',
     },
-    filterByNumericValues: [],
+    numericColumnFilters: [],
+    numericColumnOptions: [
+      'diameter',
+      'orbital_period',
+      'population',
+      'rotation_period',
+      'surface_water',
+    ],
     order: {
       column: 'name',
       sort: 'ASC',

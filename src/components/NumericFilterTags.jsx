@@ -1,34 +1,29 @@
 import React from 'react';
 import { useFilters } from '../context/Filters';
 
-const NumericFilterTags = () => {
+export default function NumericFilterTags() {
   const { filters, setFilters } = useFilters();
+  const { numericColumnFilters, numericColumnOptions } = filters;
 
-  const { filterByNumericValues } = filters;
-
-  const deleteFilter = (tagObject) => {
-    const newFilters = filterByNumericValues.filter((object) => object !== tagObject);
-    setFilters({ ...filters, filterByNumericValues: newFilters });
-  };
-
-  const createTags = () => {
-    let output = '';
-    if (filterByNumericValues.length > 0) {
-      output = filterByNumericValues.map((object, index) => (
-        <div key={ index } data-testid="filter">
-          <p>{ `${object.column} é ${object.comparison} ${object.value}` }</p>
-          <button type="button" onClick={ () => deleteFilter(object) }>X</button>
-        </div>
-      ));
-    }
-    return output;
+  const removeFilter = (column) => {
+    const newNumericColumnFilters = [...numericColumnFilters].filter(
+      (numericColumnFilter) => numericColumnFilter.column !== column,
+    );
+    setFilters({
+      ...filters,
+      numericColumnFilters: newNumericColumnFilters,
+      numericColumnOptions: [...numericColumnOptions, column].sort(),
+    });
   };
 
   return (
     <section>
-      { createTags() }
+      { numericColumnFilters.map(({ column, comparison, value }, index) => (
+        <div key={ index } data-testid="filter">
+          <p>{ `${column} é ${comparison} ${value}` }</p>
+          <button type="button" onClick={ () => removeFilter(column) }>X</button>
+        </div>
+      ))}
     </section>
   );
-};
-
-export default NumericFilterTags;
+}

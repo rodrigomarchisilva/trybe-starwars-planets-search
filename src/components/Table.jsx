@@ -12,13 +12,13 @@ import sortPlanets from '../functions/sortingFunctions';
 const Table = () => {
   const { planets, loading } = usePlanets();
   const { filters } = useFilters();
-  const { filterByName: { name }, filterByNumericValues, order } = filters;
+  const { filterByName: { name }, numericColumnFilters, order } = filters;
 
   if (loading || planets.length < 1) { return <Loading />; }
 
   let tablePlanets = filterPlanetsByName(planets, name);
 
-  tablePlanets = filterPlanetsByNumericValues(tablePlanets, filterByNumericValues);
+  tablePlanets = filterPlanetsByNumericValues(tablePlanets, numericColumnFilters);
 
   tablePlanets = sortPlanets(tablePlanets, order);
 
