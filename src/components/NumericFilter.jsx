@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useFilters } from '../context/Filters';
+import Select from './Select';
 
 export default function NumericFilter() {
   const { filters, setFilters } = useFilters();
@@ -30,42 +32,40 @@ export default function NumericFilter() {
   };
 
   return (
-    <section>
-      <select
-        data-testid="column-filter"
-        value={ selectValue }
-        onChange={ ({ target }) => setSelectValue(target.value) }
-      >
-        { numericColumnOptions.map((option, index) => (
-          <option key={ index } value={ option }>{ option }</option>
-        )) }
-      </select>
+    <InputGroup>
+      <Select
+        columnSelect={ {
+          dataTestid: 'column-filter',
+          value: selectValue || '',
+          onChange: ({ target }) => setSelectValue(target.value),
+          options: numericColumnOptions,
+        } }
+      />
 
-      <select
-        data-testid="comparison-filter"
-        value={ comparisonValue }
-        onChange={ ({ target }) => setComparisonValue(target.value) }
-      >
-        <option value="maior que">maior que</option>
-        <option value="menor que">menor que</option>
-        <option value="igual a">igual a</option>
-      </select>
+      <Select
+        columnSelect={ {
+          dataTestid: 'comparison-filter',
+          value: comparisonValue,
+          onChange: ({ target }) => setComparisonValue(target.value),
+          options: ['maior que', 'menor que', 'igual a'],
+        } }
+      />
 
-      <input
+      <Form.Control
         type="number"
         data-testid="value-filter"
         value={ inputValue }
         onChange={ ({ target }) => setInputValue(target.value) }
       />
 
-      <button
+      <Button
         type="button"
         data-testid="button-filter"
         onClick={ addFilter }
         disabled={ numericColumnOptions.length === 0 }
       >
         Filtrar
-      </button>
-    </section>
+      </Button>
+    </InputGroup>
   );
 }
