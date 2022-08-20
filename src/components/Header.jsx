@@ -1,31 +1,36 @@
 import React from 'react';
+import { Form, Row } from 'react-bootstrap';
 import { useFilters } from '../context/Filters';
 import NumericFilter from './NumericFilter';
 import NumericFilterTags from './NumericFilterTags';
 import Sort from './Sort';
 
-const Header = () => {
+export default function Header() {
   const { filters, setFilters } = useFilters();
 
-  const inputValue = filters.filterByName.name;
+  const handleInputChange = ({ target }) => {
+    setFilters({ ...filters, filterByName: target.value });
+  };
 
   return (
     <header>
-      <h1>Projeto Star Wars - Trybe</h1>
-      <input
-        type="text"
-        placeholder="Filtrar por nome"
-        data-testid="name-filter"
-        value={ inputValue }
-        onChange={ ({ target: { value } }) => setFilters(
-          { ...filters, filterByName: { name: value } },
-        ) }
-      />
-      <NumericFilter />
+      <h1 id="title">Star Wars</h1>
+      <h3 id="subtitle">Planets Search</h3>
+      <Form>
+        <Row className="ms-2 me-2">
+          <Form.Control
+            type="text"
+            placeholder="Filtrar por nome"
+            data-testid="name-filter"
+            value={ filters.filterByName }
+            onChange={ handleInputChange }
+            size="sm"
+          />
+        </Row>
+        <NumericFilter />
+        <Sort />
+      </Form>
       <NumericFilterTags />
-      <Sort />
     </header>
   );
-};
-
-export default Header;
+}

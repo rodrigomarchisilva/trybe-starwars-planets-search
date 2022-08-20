@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useFilters } from '../context/Filters';
 import Select from './Select';
 
@@ -31,41 +31,55 @@ export default function NumericFilter() {
     });
   };
 
+  Col.defaultProps = { xs: 3 };
+
   return (
-    <InputGroup>
-      <Select
-        columnSelect={ {
-          dataTestid: 'column-filter',
-          value: selectValue || '',
-          onChange: ({ target }) => setSelectValue(target.value),
-          options: numericColumnOptions,
-        } }
-      />
+    <Row className="ms-2 me-2 mt-2">
+      <Col className="p-0 pe-2">
+        <Select
+          propsObject={ {
+            dataTestid: 'column-filter',
+            value: selectValue || '',
+            onChange: ({ target }) => setSelectValue(target.value),
+            options: numericColumnOptions,
+          } }
+        />
+      </Col>
 
-      <Select
-        columnSelect={ {
-          dataTestid: 'comparison-filter',
-          value: comparisonValue,
-          onChange: ({ target }) => setComparisonValue(target.value),
-          options: ['maior que', 'menor que', 'igual a'],
-        } }
-      />
+      <Col className="p-0 pe-2">
+        <Select
+          propsObject={ {
+            dataTestid: 'comparison-filter',
+            value: comparisonValue,
+            onChange: ({ target }) => setComparisonValue(target.value),
+            options: ['maior que', 'menor que', 'igual a'],
+          } }
+        />
+      </Col>
 
-      <Form.Control
-        type="number"
-        data-testid="value-filter"
-        value={ inputValue }
-        onChange={ ({ target }) => setInputValue(target.value) }
-      />
+      <Col className="p-0 pe-2">
+        <Form.Control
+          type="number"
+          data-testid="value-filter"
+          value={ inputValue }
+          onChange={ ({ target }) => setInputValue(target.value) }
+          size="sm"
+        />
+      </Col>
 
-      <Button
-        type="button"
-        data-testid="button-filter"
-        onClick={ addFilter }
-        disabled={ numericColumnOptions.length === 0 }
-      >
-        Filtrar
-      </Button>
-    </InputGroup>
+      <Col className="d-grid p-0">
+        <Button
+          type="button"
+          data-testid="button-filter"
+          onClick={ addFilter }
+          disabled={ numericColumnOptions.length === 0 }
+          size="sm"
+          variant="secondary"
+          className="border-light"
+        >
+          Filtrar
+        </Button>
+      </Col>
+    </Row>
   );
 }

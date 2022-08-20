@@ -2,12 +2,13 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-export default function Select({ columnSelect }) {
-  const { dataTestid, value, onChange, options } = columnSelect;
+export default function Select({ propsObject }) {
+  const { dataTestid, value, onChange, options } = propsObject;
 
   Form.Select.defaultProps = {
     value,
     onChange,
+    size: 'sm',
   };
 
   return (

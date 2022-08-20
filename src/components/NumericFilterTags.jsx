@@ -17,16 +17,16 @@ export default function NumericFilterTags() {
     });
   };
 
+  const buttonGroupDisplay = numericColumnFilters.length > 0 ? 'd-block' : 'd-none';
+
   return (
-    <ButtonGroup
-      className={ numericColumnFilters.length > 0 ? 'd-block' : 'd-none' }
-      gap={ 3 }
-    >
+    <ButtonGroup className={ `${buttonGroupDisplay} ps-1 pe-1` }>
       { numericColumnFilters.map(({ column, comparison, value }, index) => (
         <Button
+          className="mb-2 ms-1 me-1 rounded-1 border border-secondary"
           size="sm"
           key={ index }
-          variant="outline-dark"
+          variant="dark"
           data-testid="filter"
         >
           <Badge
