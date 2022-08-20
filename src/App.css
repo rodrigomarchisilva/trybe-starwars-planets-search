@@ -1,3 +1,23 @@
+@font-face {
+  font-family: Star Jedi;
+  src: url('./fonts/star-jedi_[allfont.net].ttf');
+}
+
+@font-face {
+  font-family: Permanent Marker;
+  src: url('./fonts/PermanentMarker.ttf');
+}
+
+body {
+  background: url('./images/planets.jpg') no-repeat center center fixed;
+}
+
+.table-responsive {
+  border-radius: 0.25rem;
+  font-size: smaller;
+  margin: 0 0.5rem 0.5rem;
+}
+
 td {
   vertical-align: middle;
   white-space: nowrap;
@@ -6,4 +26,46 @@ td {
 th {
   text-align: center;
   vertical-align: middle;
+}
+
+#title {
+  color: black;
+  font-family: Star Jedi , Helvetica Neue , Helvetica , Arial , sans-serif;
+  margin-bottom: 0.25rem;
+  text-align: center;
+  text-shadow: -1px -1px 0 white , 1px -1px 0 white , -1px 1px 0 white , 1px 1px 0 white;
+}
+
+#subtitle {
+  color: white;
+  font-family: Permanent Marker , cursive;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 0 0 10px black;
+}
+
+.form-check-label {
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 0 10px black;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.btn.border-light {
+  font-weight: 700;
+}
+
+a {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  color: lightgrey;
 }
