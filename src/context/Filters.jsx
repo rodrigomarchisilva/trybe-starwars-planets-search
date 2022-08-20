@@ -5,9 +5,7 @@ export const FiltersContext = createContext();
 
 export const FiltersProvider = ({ children }) => {
   const [filters, setFilters] = useState({
-    filterByName: {
-      name: '',
-    },
+    filterByName: '',
     numericColumnFilters: [],
     numericColumnOptions: [
       'diameter',
