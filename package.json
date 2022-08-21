@@ -2,7 +2,7 @@
   "name": "starwars-planets-search",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rodrigomarchisilva.github.io/starwars-planets-search",
+  "homepage": "https://rodrigomarchisilva.github.io/trybe-starwars-planets-search/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
