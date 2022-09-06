@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 import { useFilters } from '../context/Filters';
 import { usePlanets } from '../context/Planets';
 import Select from './Select';
@@ -31,6 +31,33 @@ export default function Sort() {
     });
   };
 
+  const colProps = {
+    select: {
+      xs: 3,
+      sm: 2,
+      xl: 1,
+      className: 'p-1',
+    },
+    asc: {
+      xs: 3,
+      sm: 2,
+      xl: 1,
+      className: 'd-flex justify-content-center align-items-center p-1',
+    },
+    desc: {
+      xs: 3,
+      sm: 2,
+      xl: 1,
+      className: 'd-flex justify-content-center align-items-center p-1',
+    },
+    button: {
+      xs: 3,
+      sm: 2,
+      xl: 1,
+      className: 'd-grid p-1',
+    },
+  };
+
   const selectProps = {
     dataTestid: 'column-sort',
     value: selectValue,
@@ -52,23 +79,21 @@ export default function Sort() {
     dataTestid: 'column-sort-input-desc',
   };
 
-  Col.defaultProps = { xs: 3 };
-
   return (
-    <Row className="m-2">
-      <Col className="p-0 pe-2">
+    <>
+      <Col { ...colProps.select }>
         <Select propsObject={ selectProps } />
       </Col>
 
-      <Col className="d-flex justify-content-center align-items-center p-0 pe-2">
+      <Col { ...colProps.asc }>
         <Radio propsObject={ ascProps } />
       </Col>
 
-      <Col className="d-flex justify-content-center align-items-center p-0 pe-2">
+      <Col { ...colProps.desc }>
         <Radio propsObject={ descProps } />
       </Col>
 
-      <Col className="d-grid p-0">
+      <Col { ...colProps.button }>
         <Button
           type="button"
           onClick={ sortPlanets }
@@ -80,6 +105,6 @@ export default function Sort() {
           Ordenar
         </Button>
       </Col>
-    </Row>
+    </>
   );
 }

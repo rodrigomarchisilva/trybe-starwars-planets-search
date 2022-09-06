@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Form } from 'react-bootstrap';
 import { useFilters } from '../context/Filters';
 import Select from './Select';
 
@@ -31,11 +31,36 @@ export default function NumericFilter() {
     });
   };
 
-  Col.defaultProps = { xs: 3 };
+  const colProps = {
+    column: {
+      xs: 3,
+      sm: 4,
+      xl: 2,
+      className: 'p-1',
+    },
+    comparison: {
+      xs: 3,
+      sm: 4,
+      xl: 2,
+      className: 'p-1',
+    },
+    input: {
+      xs: 3,
+      sm: 2,
+      xl: 1,
+      className: 'p-1',
+    },
+    button: {
+      xs: 3,
+      sm: 2,
+      xl: 1,
+      className: 'd-grid p-1',
+    },
+  };
 
   return (
-    <Row className="ms-2 me-2 mt-2">
-      <Col className="p-0 pe-2">
+    <>
+      <Col { ...colProps.column }>
         <Select
           propsObject={ {
             dataTestid: 'column-filter',
@@ -46,7 +71,7 @@ export default function NumericFilter() {
         />
       </Col>
 
-      <Col className="p-0 pe-2">
+      <Col { ...colProps.comparison }>
         <Select
           propsObject={ {
             dataTestid: 'comparison-filter',
@@ -57,7 +82,7 @@ export default function NumericFilter() {
         />
       </Col>
 
-      <Col className="p-0 pe-2">
+      <Col { ...colProps.input }>
         <Form.Control
           type="number"
           data-testid="value-filter"
@@ -67,7 +92,7 @@ export default function NumericFilter() {
         />
       </Col>
 
-      <Col className="d-grid p-0">
+      <Col { ...colProps.button }>
         <Button
           type="button"
           data-testid="button-filter"
@@ -80,6 +105,6 @@ export default function NumericFilter() {
           Filtrar
         </Button>
       </Col>
-    </Row>
+    </>
   );
 }
