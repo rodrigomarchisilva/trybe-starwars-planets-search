@@ -5,7 +5,7 @@ import Table from './components/Table';
 import { FiltersProvider } from './context/Filters';
 import { PlanetsProvider } from './context/Planets';
 
-function App() {
+export default function App() {
   return (
     <PlanetsProvider>
       <FiltersProvider>
@@ -15,5 +15,3 @@ function App() {
     </PlanetsProvider>
   );
 }
-
-export default App;
