@@ -1,26 +1,16 @@
 {
   "files": {
-    "main.css": "/trybe-starwars-planets-search/static/css/main.95fe740d.chunk.css",
-    "main.js": "/trybe-starwars-planets-search/static/js/main.5ad2915c.chunk.js",
-    "main.js.map": "/trybe-starwars-planets-search/static/js/main.5ad2915c.chunk.js.map",
-    "runtime-main.js": "/trybe-starwars-planets-search/static/js/runtime-main.2db62ff0.js",
-    "runtime-main.js.map": "/trybe-starwars-planets-search/static/js/runtime-main.2db62ff0.js.map",
-    "static/css/2.0431cc1d.chunk.css": "/trybe-starwars-planets-search/static/css/2.0431cc1d.chunk.css",
-    "static/js/2.f1ad9c2d.chunk.js": "/trybe-starwars-planets-search/static/js/2.f1ad9c2d.chunk.js",
-    "static/js/2.f1ad9c2d.chunk.js.map": "/trybe-starwars-planets-search/static/js/2.f1ad9c2d.chunk.js.map",
+    "main.css": "/trybe-starwars-planets-search/static/css/main.97985789.css",
+    "main.js": "/trybe-starwars-planets-search/static/js/main.a9c2fd5f.js",
+    "static/media/planets.jpg": "/trybe-starwars-planets-search/static/media/planets.4ecd4169ab8bbfd4c75c.jpg",
+    "static/media/PermanentMarker.ttf": "/trybe-starwars-planets-search/static/media/PermanentMarker.8e0809258860386d2a28.ttf",
+    "static/media/star-jedi_[allfont.net].ttf": "/trybe-starwars-planets-search/static/media/star-jedi_[allfont.net].73fb6d949e374e9bee99.ttf",
     "index.html": "/trybe-starwars-planets-search/index.html",
-    "precache-manifest.373ba3736687b5413fdb63fc40cde3d9.js": "/trybe-starwars-planets-search/precache-manifest.373ba3736687b5413fdb63fc40cde3d9.js",
-    "service-worker.js": "/trybe-starwars-planets-search/service-worker.js",
-    "static/css/2.0431cc1d.chunk.css.map": "/trybe-starwars-planets-search/static/css/2.0431cc1d.chunk.css.map",
-    "static/css/main.95fe740d.chunk.css.map": "/trybe-starwars-planets-search/static/css/main.95fe740d.chunk.css.map",
-    "static/js/2.f1ad9c2d.chunk.js.LICENSE.txt": "/trybe-starwars-planets-search/static/js/2.f1ad9c2d.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/trybe-starwars-planets-search/static/media/star-jedi_[allfont.net].7c622ae5.ttf"
+    "main.97985789.css.map": "/trybe-starwars-planets-search/static/css/main.97985789.css.map",
+    "main.a9c2fd5f.js.map": "/trybe-starwars-planets-search/static/js/main.a9c2fd5f.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.2db62ff0.js",
-    "static/css/2.0431cc1d.chunk.css",
-    "static/js/2.f1ad9c2d.chunk.js",
-    "static/css/main.95fe740d.chunk.css",
-    "static/js/main.5ad2915c.chunk.js"
+    "static/css/main.97985789.css",
+    "static/js/main.a9c2fd5f.js"
   ]
 }
