@@ -9,7 +9,7 @@ export const PlanetsProvider = ({ children }) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://swapi-trybe.herokuapp.com/api/planets/')
+    fetch('https://swapi.dev/api/planets/')
       .then((response) => response.json())
       .then((planetsObject) => {
         const planetsArray = planetsObject.results.map((result) => {
